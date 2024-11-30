@@ -184,7 +184,7 @@
         }
 
         function checkRevisions() {
-            axios.get('{{ route('api.v1.events.seatingplans.index', ['event' => $event->code]) }}', {
+            axios.get('{{ route('api.internal.v1.events.seatingplans.index', ['event' => $event->code]) }}', {
                 headers: {
                     'Accept': 'application/json',
                 },

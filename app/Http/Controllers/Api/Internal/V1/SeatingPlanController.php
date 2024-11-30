@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers\Api\Internal\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\SeatingPlan;
-use App\Transformers\V1\SeatingPlanTransformer;
+use App\Transformers\Internal\V1\SeatingPlanTransformer;
 use Illuminate\Http\Request;
 
 class SeatingPlanController extends Controller

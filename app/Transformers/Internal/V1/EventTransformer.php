@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Transformers\V1;
+namespace App\Transformers\Internal\V1;
 
 use App\Models\Event;
+use App\Transformers\AbstractTransformer;
 
 class EventTransformer extends AbstractTransformer
 {

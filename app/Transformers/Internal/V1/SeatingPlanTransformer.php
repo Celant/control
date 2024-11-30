@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Transformers\V1;
+namespace App\Transformers\Internal\V1;
 
 use App\Models\SeatingPlan;
 use App\Transformers\AbstractTransformer;
-use App\Transformers\Internal\V1\EventTransformer;
 
 class SeatingPlanTransformer extends AbstractTransformer
 {
@@ -14,7 +13,7 @@ class SeatingPlanTransformer extends AbstractTransformer
      * @var array
      */
     protected array $defaultIncludes = [
-        'seats',
+        'event',
     ];
 
     /**
@@ -24,7 +23,6 @@ class SeatingPlanTransformer extends AbstractTransformer
      */
     protected array $availableIncludes = [
         'event',
-        'seats',
     ];
 
     /**
@@ -42,16 +40,13 @@ class SeatingPlanTransformer extends AbstractTransformer
             'order' => $plan->order,
         ];
 
-        return $this->modifyForUser($data, $plan);
+        $data = $this->modifyForUser($data, $plan);
+
+        return $data;
     }
 
     public function includeEvent(SeatingPlan $plan)
     {
         return $this->item($plan->event, new EventTransformer());
-    }
-
-    public function includeSeats(SeatingPlan $plan)
-    {
-        return $this->collection($plan->getData(), new SeatTransformer());
     }
 }
